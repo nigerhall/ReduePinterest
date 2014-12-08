@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @board.user_id %>
+  <%= @board.user.first_name %> <!-- took out board.user_id and added board.user.first_name so that the users name would display in the user column on the boards page -->
 </p>
 
 <%= link_to 'Edit', edit_board_path(@board) %> |
