@@ -1,12 +1,12 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
-  def delete_all
+def delete_all
     Pin.delete_all
     respond_to do |format|
       format.html {redirect_to pins_url}
       format.json {head  :no_content}
-  end
+end
   
 end
 
@@ -37,7 +37,7 @@ end
 
     respond_to do |format|
       if @pin.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+        format.html { redirect_to @pin.board, notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @pin }
       else
         format.html { render :new }

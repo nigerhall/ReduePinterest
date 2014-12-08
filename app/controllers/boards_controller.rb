@@ -10,6 +10,12 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    @pins = @board.pins
+    
+  end
+
+  def image
+    @pins = image_tag(@pin.image_url, :width => 200) if @pin.image.present?     
   end
 
   # GET /boards/new
@@ -69,6 +75,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:name, :about, :user_id)
+      params.require(:board).permit(:name, :about, :user_id, :image)
     end
 end
