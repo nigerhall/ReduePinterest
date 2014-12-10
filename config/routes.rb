@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   delete '/pins' => 'pins#delete_all'
 
   get 'static_pages/home'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   get 'static_pages/about'
 
   root to: "static_pages#home"
+
+  devise_for :users, :controllers => { :registrations => "registrations"}
+  
   resources :pins
 
   resources :boards

@@ -13,7 +13,11 @@ end
   # GET /pins
   # GET /pins.json
   def index
-    @pins = Pin.all
+    if user_signed_in?
+      @pins = current_user.pins
+    else
+      @pins = Pin.all
+    end
   end
 
   # GET /pins/1

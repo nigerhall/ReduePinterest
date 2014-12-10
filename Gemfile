@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'foundation-rails'
+gem 'devise'
 gem 'carrierwave' #allows users to upload videos
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
