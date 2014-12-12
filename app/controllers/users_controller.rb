@@ -5,22 +5,13 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    if @users.count > 5
-      @some_text = "Great! we have #{@users.count} users"
-    else
-      @some_text = "We need more Users"
-    end
-  end
+ end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @boards = @user.boards
-    if @user.first_name == "Zack"
-      @some_text = "Hello Zack"
-    else
-      @some_text = "You're not Zack!"
-    end
+    
   end
 
   # GET /users/new

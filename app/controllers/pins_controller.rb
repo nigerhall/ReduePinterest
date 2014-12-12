@@ -14,15 +14,18 @@ end
   # GET /pins.json
   def index
     if user_signed_in?
-      @pins = current_user.pins
+      @pins = current_user.pins.paginate(page: params[:page], per_page: 5)
     else
-      @pins = Pin.all
+      @pins = Pin.paginate(page: params[:page], per_page: 5)
     end
+    
   end
 
   # GET /pins/1
   # GET /pins/1.json
   def show
+
+
   end
 
   # GET /pins/new
@@ -38,6 +41,7 @@ end
   # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
+    
 
     respond_to do |format|
       if @pin.save

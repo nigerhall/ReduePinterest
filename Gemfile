@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+gem 'faker'
+gem 'activeadmin', github: 'activeadmin'
+gem 'will_paginate', '~> 3.0.6'
 gem 'foundation-rails'
 gem 'devise'
 gem 'carrierwave' #allows users to upload videos

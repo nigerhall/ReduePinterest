@@ -15,14 +15,31 @@
   <%= @board.user.first_name %> 
 </p>
 <p>
-  <strong>Create A New Pin:</strong>
-  <%= Pin.new %> 
+  <strong><%= link_to 'Add More Pins', new_pin_path %></strong>
+   
 </p>
-<p> Showing All <%= @board.name %>'s Pins: </p>
+<p> Showing All of <%= @board.name %> Pins: </p>
 <ul>
-	<% @pins.each do |pin| %>
-	<%= pin.name %>
-  <%= image_tag(pin.image_url, :width => 200) if pin.image.present? %>
+   <%= will_paginate(@pins) %>
+	<% @board.pins.each do |pin| %>
+  <div class="item-background">
+      <div class="pin-image">
+        <%= image_tag(pin.image_url, :width => "100")%>
+      </div>
+      <div class="item-info">
+        <h3><%pin.name %></h3>
+        <h4>Board Name: <%= pin.board.name %></h4>
+        <h4>Pin Creator: <%= pin.user.full_name rescue "N/A" %></h4>
+      </div>
+      <div class="item-links">
+        <%= link_to 'Show', board_path %>
+        <%= link_to 'Edit', edit_board_path(@board) %>
+        <%= link_to 'Destroy', board_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      </div>
+  </div>
+
+  
 	<% end %>
 </ul>
 

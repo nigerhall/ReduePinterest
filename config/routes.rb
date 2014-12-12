@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   
-  delete '/pins' => 'pins#delete_all'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+ get 'static_pages/home' => "static_pages#home", as: :home
 
-  get 'static_pages/home'
+ get 'static_pages/about' => "static_pages#about", as: :about
 
-  get 'static_pages/about'
+ delete '/pins' => "pins#delete"
 
-  root to: "static_pages#home"
+ root to: "static_pages#home"
 
   devise_for :users, :controllers => { :registrations => "registrations"}
   
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
   resources :boards
 
   resources :users
+
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

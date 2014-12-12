@@ -4,13 +4,18 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+    if user_signed_in?
+      @boards = current_user.boards.paginate(page: params[:page], per_page: 1)
+    else 
+      @boards = Board.paginate(page: params[:page], per_page: 1)
+    end
+     
   end
 
   # GET /boards/1
   # GET /boards/1.json
   def show
-    @pins = @board.pins
+    @pins = @board.pins.paginate(page: params[:page], per_page: 5)
     
   end
 
