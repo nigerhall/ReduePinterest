@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
+gem 'bootstrap-sass'
 gem 'faker'
 gem 'activeadmin', github: 'activeadmin'
 gem 'will_paginate', '~> 3.0.6'
 gem 'foundation-rails'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 gem 'carrierwave' #allows users to upload videos
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
